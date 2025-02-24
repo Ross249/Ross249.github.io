@@ -1,5 +1,26 @@
 ---
-
+const links = [
+  {
+    id: "link-0",
+    title: "Life",
+    link: "#",
+  },
+  {
+    id: "link-1",
+    title: "Code",
+    link: "#",
+  },
+  {
+    id: "link-2",
+    title: "Read",
+    link: "#",
+  },
+  {
+    id: "link-0",
+    title: "Resume",
+    link: "#",
+  },
+];
 ---
 
 <!-- Navigation -->
@@ -7,17 +28,21 @@
   class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center"
 >
   <div class="flex flex-col">
-    <a href="/" class="text-2xl font-serif tracking-wider">M</a>
-    <a href="/" class="text-2xl font-serif tracking-wider -mt-2">O</a>
+    <a href="/" class="text-2xl font-hw tracking-wider">Jim</a>
+    <a href="/" class="text-2xl font-hw tracking-wider -mt-2">Luo</a>
   </div>
 
-  <div class="hidden md:flex space-x-12 text-sm tracking-widest">
-    <a href="/collections" class="hover:text-gray-600 transition-colors"
-      >COLLECTIONS</a
-    >
-    <a href="/events" class="hover:text-gray-600 transition-colors">EVENTS</a>
-    <a href="/visit" class="hover:text-gray-600 transition-colors">VISIT</a>
-    <a href="/tickets" class="bg-black text-white px-4 py-1">BUY A TICKET</a>
+  <div class="hidden md:flex space-x-12 text-sm tracking-widest uppercase">
+    {
+      links.map((l) => {
+        return (
+          <a href={l.link} class="hover:text-gray-600 transition-colors">
+            {l.title}
+          </a>
+        );
+      })
+    }
+    <!-- <a href="/" class="bg-black text-white px-4 py-1">Resume</a> -->
   </div>
 
   <button class="md:hidden mobile-menu-button">
@@ -34,26 +59,18 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu fixed inset-0 bg-white z-40 hidden">
   <div
-    class="flex flex-col items-center justify-center h-full space-y-8 text-xl"
+    class="flex flex-col items-center justify-center h-full space-y-8 text-xl uppercase"
   >
-    <a
-      href="/collections"
-      class="hover:text-white hover:bg-black transition-colors px-6 py-2"
-      >COLLECTIONS</a
-    >
-    <a
-      href="/events"
-      class="hover:text-white hover:bg-black transition-colors px-6 py-2"
-      >EVENTS</a
-    >
-    <a
-      href="/visit"
-      class="hover:text-white hover:bg-black transition-colors px-6 py-2"
-      >VISIT</a
-    >
-    <a href="/tickets" class="hover:text-white hover:bg-black px-6 py-2"
-      >BUY A TICKET</a
-    >
+    {
+      links.map((l) => (
+        <a
+          href={l.link}
+          class="hover:text-white hover:bg-black transition-colors px-6 py-2"
+        >
+          {l.title}
+        </a>
+      ))
+    }
   </div>
 </div>
 
@@ -80,12 +97,12 @@
     gsap.fromTo(
       menu,
       { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "power2.out" }
+      { opacity: 1, duration: 0.5, ease: "power2.out" },
     );
     gsap.fromTo(
       menuItems,
       { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" }
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
     );
   }
 

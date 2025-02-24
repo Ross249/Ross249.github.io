@@ -6,6 +6,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: "https://Ross249.github.io",
+  site: "https://jimmieluo.com",
   base: "",
 });
