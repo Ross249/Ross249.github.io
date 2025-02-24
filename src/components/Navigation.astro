@@ -1,0 +1,109 @@
+---
+
+---
+
+<!-- Navigation -->
+<nav
+  class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center"
+>
+  <div class="flex flex-col">
+    <a href="/" class="text-2xl font-serif tracking-wider">M</a>
+    <a href="/" class="text-2xl font-serif tracking-wider -mt-2">O</a>
+  </div>
+
+  <div class="hidden md:flex space-x-12 text-sm tracking-widest">
+    <a href="/collections" class="hover:text-gray-600 transition-colors"
+      >COLLECTIONS</a
+    >
+    <a href="/events" class="hover:text-gray-600 transition-colors">EVENTS</a>
+    <a href="/visit" class="hover:text-gray-600 transition-colors">VISIT</a>
+    <a href="/tickets" class="bg-black text-white px-4 py-1">BUY A TICKET</a>
+  </div>
+
+  <button class="md:hidden mobile-menu-button">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"></path>
+    </svg>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu fixed inset-0 bg-white z-40 hidden">
+  <div
+    class="flex flex-col items-center justify-center h-full space-y-8 text-xl"
+  >
+    <a
+      href="/collections"
+      class="hover:text-white hover:bg-black transition-colors px-6 py-2"
+      >COLLECTIONS</a
+    >
+    <a
+      href="/events"
+      class="hover:text-white hover:bg-black transition-colors px-6 py-2"
+      >EVENTS</a
+    >
+    <a
+      href="/visit"
+      class="hover:text-white hover:bg-black transition-colors px-6 py-2"
+      >VISIT</a
+    >
+    <a href="/tickets" class="hover:text-white hover:bg-black px-6 py-2"
+      >BUY A TICKET</a
+    >
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  // Mobile menu functionality
+  const btn = document.querySelector(".mobile-menu-button");
+  const menu = document.querySelector(".mobile-menu");
+  const menuItems = document.querySelectorAll(".mobile-menu a");
+
+  let isOpen = false;
+
+  btn?.addEventListener("click", () => {
+    if (!isOpen) {
+      openMenu();
+    } else {
+      closeMenu();
+    }
+    isOpen = !isOpen;
+  });
+
+  function openMenu() {
+    menu?.classList.remove("hidden");
+    gsap.fromTo(
+      menu,
+      { opacity: 0 },
+      { opacity: 1, duration: 0.5, ease: "power2.out" }
+    );
+    gsap.fromTo(
+      menuItems,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" }
+    );
+  }
+
+  function closeMenu() {
+    gsap.to(menuItems, {
+      y: -30,
+      opacity: 0,
+      duration: 0.3,
+      stagger: 0.05,
+      ease: "power2.in",
+    });
+    gsap.to(menu, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power2.in",
+      onComplete: () => {
+        menu?.classList.add("hidden");
+      },
+    });
+  }
+</script>
