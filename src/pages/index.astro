@@ -47,7 +47,7 @@ import LeftSideBar from "../components/LeftSideBar.astro";
   });
 
   navLis.forEach((anchor, i) => {
-    anchor.addEventListener("click", function (e) {
+    anchor.addEventListener("click", function () {
       gsap.to(window, {
         duration: 1,
         scrollTo: {
@@ -57,11 +57,37 @@ import LeftSideBar from "../components/LeftSideBar.astro";
       });
     });
   });
+
+  // rect effect
+  gsap.fromTo(
+    "#leftRect",
+    {
+      xPercent: -100, // Start completely off-screen to the left
+    },
+    {
+      xPercent: 0, // Move to original position
+      duration: 1.5,
+      ease: "power4.out",
+    },
+  );
+
+  gsap.fromTo(
+    "#rightRect",
+    {
+      xPercent: 100, // Start completely off-screen to the right
+    },
+    {
+      xPercent: 0, // Move to original position
+      duration: 1.5,
+      ease: "power4.out",
+      delay: 0.3, // Add slight delay for staggered effect
+    },
+  );
 </script>
 
 <style>
   .sections-container {
-    width: 400vw;
+    width: 500vw;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
@@ -78,72 +104,45 @@ import LeftSideBar from "../components/LeftSideBar.astro";
   <div class="sections-container">
     <section class="section" id="section1">
       <!-- Main Content -->
-      <main class="min-h-screen grid grid-cols-12 relative">
+      <main class="min-h-screen grid grid-cols-12 relative" id="grid-container">
+        <!-- Rect Effect -->
+        <!-- Left Rectangle -->
+        <div
+          id="leftRect"
+          class="w-[60vw] h-[30vh] bg-set1-4 fixed top-[28%] left-0 z-2"
+        >
+        </div>
+
+        <!-- Right Rectangle -->
+        <div
+          id="rightRect"
+          class="w-[60vw] h-[30vh] bg-set1-4 fixed top-[46%] right-0 z-2"
+        >
+        </div>
+
         <!-- Left sidebar -->
         <LeftSideBar />
 
         <!-- Main content -->
-        <div class="col-span-8 relative">
-          <div class="exhibition-content relative h-screen flex items-center">
-            <div class="bg-[#2C3A2F] p-12 max-w-md relative z-10">
-              <div class="text-white space-y-6">
-                <p class="text-sm">MARCH 3, 2019</p>
-                <h1 class="font-serif text-4xl">Prophecy of Colours</h1>
-                <p class="text-lg font-serif">From Monet to Renoir</p>
-                <div class="flex items-center space-x-4 mt-8">
-                  <span class="text-sm">01</span>
-                  <div class="flex-1 h-px bg-white/20"></div>
-                  <span class="text-sm">04</span>
-                </div>
-                <div class="flex space-x-4 mt-4">
-                  <button class="p-2 hover:bg-white/10 transition-colors">
-                    <svg
-                      class="w-6 h-6 text-white transform rotate-180"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
-                  <button class="p-2 hover:bg-white/10 transition-colors">
-                    <svg
-                      class="w-6 h-6 text-white"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M9 5l7 7-7 7"></path>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-2/3 h-2/3">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-AWWMlkssonBvSo29lvQm8M72dXnjO9.png"
-                alt="Monet's Poppy Field"
-                class="w-full h-full object-cover"
-              />
-            </div>
+        <div class="col-span-8 relative border-x-1 border-set1-2">
+          <div class="w-full relative h-screen flex justify-center py-20">
+            <div class="absolute h-screen border-l-1 border-set1-2"></div>
+            <!-- <div class="absolute top-1/2 -translate-y-1/2 w-full z-5">
+             
+            </div> -->
+            <img
+              src="/images/banner.jpeg"
+              alt="banner"
+              class="w-full h-full object-cover z-5"
+            />
           </div>
         </div>
-        <!-- Right sidebar -->
-        <RightSideBar />
       </main>
     </section>
 
     <section class="section bg-gray-400" id="section2">
       <div class="h-full flex items-center justify-center">
-        <h2 class="text-4xl font-serif">Collections</h2>
+        <h2 class="text-4xl font-hw">Collections</h2>
       </div>
     </section>
 
@@ -158,8 +157,13 @@ import LeftSideBar from "../components/LeftSideBar.astro";
         <h2 class="text-4xl font-serif">Visit Us</h2>
       </div>
     </section>
+
+    <section class="section bg-red-100">
+      <main class="min-h-screen grid grid-cols-12 relative" id="grid-container">
+        <div class="col-span-2"></div>
+        <div class="col-span-8 relative border-x-1 border-set1-2"></div>
+        <RightSideBar />
+      </main>
+    </section>
   </div>
-  <!-- <div class="min-w-screen min-h-screen">
-    <RightSideBar />
-  </div> -->
 </Layout>

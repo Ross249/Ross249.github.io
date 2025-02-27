@@ -32,11 +32,14 @@ const links = [
     <a href="/" class="text-2xl font-hw tracking-wider -mt-2">Luo</a>
   </div>
 
-  <div class="hidden md:flex space-x-12 text-sm tracking-widest uppercase">
+  <div class="hidden md:flex space-x-12 text-lg tracking-widest">
     {
       links.map((l) => {
         return (
-          <a href={l.link} class="hover:text-gray-600 transition-colors">
+          <a
+            href={l.link}
+            class="hover:text-set1-2 transition-colors font-slabo hover:bg-set1-4 px-3"
+          >
             {l.title}
           </a>
         );
@@ -57,15 +60,15 @@ const links = [
 </nav>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu fixed inset-0 bg-white z-40 hidden">
+<div class="mobile-menu fixed inset-0 z-40 hidden bg-set1-2">
   <div
-    class="flex flex-col items-center justify-center h-full space-y-8 text-xl uppercase"
+    class="flex flex-col items-center justify-center h-full space-y-8 text-xl"
   >
     {
       links.map((l) => (
         <a
           href={l.link}
-          class="hover:text-white hover:bg-black transition-colors px-6 py-2"
+          class="hover:text-white hover:bg-black transition-colors px-6 py-2 font-slabo"
         >
           {l.title}
         </a>

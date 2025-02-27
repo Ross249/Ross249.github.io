@@ -2,5 +2,10 @@
 
 @theme {
 	--font-hw: 'Dancing Script';
-	--font-qs: 'Quicksand';
+	--font-qs: "Noto Sans", sans-serif;
+	--font-slabo: 'Slabo';
+	--color-set1-1: #B7C4CF;
+	--color-set1-2: #EEE3CB;
+	--color-set1-3: #D7C0AE;
+	--color-set1-4: #967E76;
 }
