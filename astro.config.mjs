@@ -8,4 +8,5 @@ export default defineConfig({
   },
   site: "https://jimmieluo.com",
   base: "",
+  output: "static",
 });
