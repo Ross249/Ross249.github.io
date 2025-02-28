@@ -1,0 +1,22 @@
+---
+const { url, title } = Astro.props;
+---
+
+<!-- <a
+  href={url}
+  class="hover:text-set1-2 transition-colors font-slabo hover:bg-set1-4 px-3"
+>
+  {title}
+</a> -->
+<a
+  href={url}
+  class="relative text-xl text-gray-800 uppercase transition-all duration-300 ease-in-out bg-transparent group"
+>
+  <span
+    class="text-base/2 relative z-5 transition-all tracking-widest duration-300 ease-in-out inline-block font-slabo"
+    >{title}</span
+  >
+  <span
+    class="absolute inset-0 transition-all duration-300 ease-in-out group-hover:bg-palette-6 group-hover:translate-x-[0.5em] group-hover:translate-y-[0.7em]"
+  ></span>
+</a>

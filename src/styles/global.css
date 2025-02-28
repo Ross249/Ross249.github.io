@@ -1,11 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-	--font-hw: 'Dancing Script';
-	--font-qs: "Noto Sans", sans-serif;
-	--font-slabo: 'Slabo';
-	--color-set1-1: #B7C4CF;
-	--color-set1-2: #EEE3CB;
-	--color-set1-3: #D7C0AE;
-	--color-set1-4: #967E76;
+  --font-hw: "Dancing Script";
+  --font-qs: "Noto Sans", sans-serif;
+  --font-slabo: "Slabo";
+  --color-palette-1: #68869a;
+  --color-palette-2: #e3dfd0;
+  --color-palette-3: #9bb2b5;
+  --color-palette-4: #b3786c;
+  --color-palette-5: #d29d94;
+  --color-palette-6: #bb8974;
+  --color-palette-7: #e0b597;
+  --color-palette-8: #dbb7b5;
+  --color-palette-9: #f3f4ef;
+  --color-palette-10: #7cb4b3;
 }

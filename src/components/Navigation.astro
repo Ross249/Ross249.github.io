@@ -1,24 +1,26 @@
 ---
+import NavLink from "./NavLink.astro";
+
 const links = [
-  {
-    id: "link-0",
-    title: "Life",
-    link: "#",
-  },
-  {
-    id: "link-1",
-    title: "Code",
-    link: "#",
-  },
-  {
-    id: "link-2",
-    title: "Read",
-    link: "#",
-  },
+  // {
+  //   id: "link-0",
+  //   title: "Life",
+  //   link: "#",
+  // },
+  // {
+  //   id: "link-1",
+  //   title: "Code",
+  //   link: "#",
+  // },
+  // {
+  //   id: "link-2",
+  //   title: "Read",
+  //   link: "#",
+  // },
   {
     id: "link-0",
     title: "Resume",
-    link: "#",
+    link: "https://www.dropbox.com/scl/fi/eucie02todu18k20wlgcz/resume.pdf?rlkey=5hy5693a77ldikk3nns94clyy&e=1&st=584r6ti8&dl=0",
   },
 ];
 ---
@@ -27,28 +29,16 @@ const links = [
 <nav
   class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center"
 >
-  <div class="flex flex-col">
+  <div class="flex flex-col text-gray-800">
     <a href="/" class="text-2xl font-hw tracking-wider">Jim</a>
     <a href="/" class="text-2xl font-hw tracking-wider -mt-2">Luo</a>
   </div>
 
   <div class="hidden md:flex space-x-12 text-lg tracking-widest">
-    {
-      links.map((l) => {
-        return (
-          <a
-            href={l.link}
-            class="hover:text-set1-2 transition-colors font-slabo hover:bg-set1-4 px-3"
-          >
-            {l.title}
-          </a>
-        );
-      })
-    }
-    <!-- <a href="/" class="bg-black text-white px-4 py-1">Resume</a> -->
+    {links.map((l) => <NavLink url={l.link} title={l.title} />)}
   </div>
 
-  <button class="md:hidden mobile-menu-button">
+  <button class="md:hidden mobile-menu-button z-50 text-gray-800">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         stroke-linecap="round"
@@ -57,73 +47,64 @@ const links = [
         d="M4 6h16M4 12h16M4 18h16"></path>
     </svg>
   </button>
-</nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu fixed inset-0 z-40 hidden bg-set1-2">
-  <div
-    class="flex flex-col items-center justify-center h-full space-y-8 text-xl"
-  >
-    {
-      links.map((l) => (
-        <a
-          href={l.link}
-          class="hover:text-white hover:bg-black transition-colors px-6 py-2 font-slabo"
-        >
-          {l.title}
-        </a>
-      ))
-    }
+  <!-- Mobile Menu -->
+  <div class="mobile-menu fixed inset-0 z-40 hidden bg-palette-7">
+    <div
+      class="flex flex-col items-center justify-center h-full space-y-8 text-xl"
+    >
+      {links.map((l) => <NavLink url={l.link} title={l.title} />)}
+    </div>
   </div>
-</div>
 
-<script>
-  import { gsap } from "gsap";
-  // Mobile menu functionality
-  const btn = document.querySelector(".mobile-menu-button");
-  const menu = document.querySelector(".mobile-menu");
-  const menuItems = document.querySelectorAll(".mobile-menu a");
+  <script>
+    import { gsap } from "gsap";
+    // Mobile menu functionality
+    const btn = document.querySelector(".mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+    const menuItems = document.querySelectorAll(".mobile-menu a");
 
-  let isOpen = false;
+    let isOpen = false;
 
-  btn?.addEventListener("click", () => {
-    if (!isOpen) {
-      openMenu();
-    } else {
-      closeMenu();
+    btn?.addEventListener("click", () => {
+      if (!isOpen) {
+        openMenu();
+      } else {
+        closeMenu();
+      }
+      isOpen = !isOpen;
+    });
+
+    function openMenu() {
+      menu?.classList.remove("hidden");
+      gsap.fromTo(
+        menu,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5, ease: "power2.out" }
+      );
+      gsap.fromTo(
+        menuItems,
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" }
+      );
     }
-    isOpen = !isOpen;
-  });
 
-  function openMenu() {
-    menu?.classList.remove("hidden");
-    gsap.fromTo(
-      menu,
-      { opacity: 0 },
-      { opacity: 1, duration: 0.5, ease: "power2.out" },
-    );
-    gsap.fromTo(
-      menuItems,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
-    );
-  }
-
-  function closeMenu() {
-    gsap.to(menuItems, {
-      y: -30,
-      opacity: 0,
-      duration: 0.3,
-      stagger: 0.05,
-      ease: "power2.in",
-    });
-    gsap.to(menu, {
-      opacity: 0,
-      duration: 0.5,
-      ease: "power2.in",
-      onComplete: () => {
-        menu?.classList.add("hidden");
-      },
-    });
-  }
-</script>
+    function closeMenu() {
+      gsap.to(menuItems, {
+        y: -30,
+        opacity: 0,
+        duration: 0.3,
+        stagger: 0.05,
+        ease: "power2.in",
+      });
+      gsap.to(menu, {
+        opacity: 0,
+        duration: 0.5,
+        ease: "power2.in",
+        onComplete: () => {
+          menu?.classList.add("hidden");
+        },
+      });
+    }
+  </script>
+</nav>

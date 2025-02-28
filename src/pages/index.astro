@@ -68,7 +68,7 @@ import LeftSideBar from "../components/LeftSideBar.astro";
       xPercent: 0, // Move to original position
       duration: 1.5,
       ease: "power4.out",
-    },
+    }
   );
 
   gsap.fromTo(
@@ -81,13 +81,13 @@ import LeftSideBar from "../components/LeftSideBar.astro";
       duration: 1.5,
       ease: "power4.out",
       delay: 0.3, // Add slight delay for staggered effect
-    },
+    }
   );
 </script>
 
 <style>
   .sections-container {
-    width: 500vw;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
@@ -100,7 +100,7 @@ import LeftSideBar from "../components/LeftSideBar.astro";
 
 <Layout title="Jim Luo">
   <Navigation />
-  <NavigationIndictor />
+  <!-- <NavigationIndictor /> -->
   <div class="sections-container">
     <section class="section" id="section1">
       <!-- Main Content -->
@@ -109,14 +109,14 @@ import LeftSideBar from "../components/LeftSideBar.astro";
         <!-- Left Rectangle -->
         <div
           id="leftRect"
-          class="w-[60vw] h-[30vh] bg-set1-4 fixed top-[28%] left-0 z-2"
+          class="w-[60vw] h-[30vh] bg-palette-7 fixed top-[28%] left-0 z-2"
         >
         </div>
 
         <!-- Right Rectangle -->
         <div
           id="rightRect"
-          class="w-[60vw] h-[30vh] bg-set1-4 fixed top-[46%] right-0 z-2"
+          class="w-[60vw] h-[30vh] bg-palette-7 fixed top-[46%] right-0 z-2"
         >
         </div>
 
@@ -124,23 +124,61 @@ import LeftSideBar from "../components/LeftSideBar.astro";
         <LeftSideBar />
 
         <!-- Main content -->
-        <div class="col-span-8 relative border-x-1 border-set1-2">
-          <div class="w-full relative h-screen flex justify-center py-20">
-            <div class="absolute h-screen border-l-1 border-set1-2"></div>
+        <div class="col-span-8 relative border-x-1 border-palette-7">
+          <div class="w-full relative h-screen flex justify-center">
+            <div class="absolute h-screen border-l-1 border-palette-7 z-1">
+            </div>
             <!-- <div class="absolute top-1/2 -translate-y-1/2 w-full z-5">
              
             </div> -->
-            <img
-              src="/images/banner.jpeg"
-              alt="banner"
-              class="w-full h-full object-cover z-5"
-            />
+            <div class="w-full h-full z-5 py-20 relative">
+              <img
+                src="/images/banner.jpeg"
+                alt="banner"
+                class="w-full h-full object-cover"
+              />
+              <div
+                class="absolute w-full lg:w-2/3 top-20 bottom-20 flex flex-col"
+              >
+                <div
+                  class="max-w-3xl w-full space-y-6 p-4 bg-palette-6/20 backdrop-blur-xs h-full backdrop-brightness-90 backdrop-contrast-125 flex flex-col items-center justify-center"
+                >
+                  <h1
+                    class="font-qs text-[clamp(3rem,15vw,8rem)] font-bold text-center tracking-tight bg-clip-text text-palette-1"
+                  >
+                    Jim Luo
+                  </h1>
+                  <p
+                    class="font-qs text-gray-800 text-xl leading-relaxed text-justify space-y-6 px-2"
+                  >
+                    <span
+                      class="block first-letter:text-3xl first-letter:font-bold first-letter:mr-1 first-letter:float-left"
+                    >
+                      Hello, I'm Jim Luo, a software engineer. I love building
+                      and creating because of the experience of playing Legos
+                      since I was a child. That experience made me switched my
+                      major from industrial design to software engineering in
+                      colleage. I try my best to be a tech producer rather than
+                      a consumer.
+                    </span>
+
+                    <span class="block">
+                      Currently specializing in web development and exploring
+                      something useful, beautiful and empowering in AI area.
+                      Currently located in Canada, opened to new opportunities.
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <RightSideBar />
       </main>
     </section>
+  </div>
 
-    <section class="section bg-gray-400" id="section2">
+  <!-- <section class="section bg-gray-400" id="section2">
       <div class="h-full flex items-center justify-center">
         <h2 class="text-4xl font-hw">Collections</h2>
       </div>
@@ -164,6 +202,5 @@ import LeftSideBar from "../components/LeftSideBar.astro";
         <div class="col-span-8 relative border-x-1 border-set1-2"></div>
         <RightSideBar />
       </main>
-    </section>
-  </div>
+    </section> -->
 </Layout>
