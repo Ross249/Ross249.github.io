@@ -1,0 +1,40 @@
+---
+
+---
+
+<ul class="indicator">
+	<li class="indicator-dot active" data-section="0"></li>
+	<li class="indicator-dot" data-section="1"></li>
+	<li class="indicator-dot" data-section="2"></li>
+	<li class="indicator-dot" data-section="3"></li>
+	<li class="indicator-dot" data-section="4"></li>
+</ul>
+
+<style>
+	.indicator {
+		position: fixed;
+		right: 2rem;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 10;
+	}
+
+	.indicator-dot {
+		width: 0.5rem;
+		height: 0.5rem;
+		border-radius: 50%;
+		background-color: #ccc;
+		margin: 0.5rem 0;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+	@media (max-width: 768px) {
+		.indicator-dot {
+			width: 0.75rem;
+			height: 0.75rem;
+		}
+	}
+	.indicator li.active {
+		background-color: #754e1a;
+	}
+</style>

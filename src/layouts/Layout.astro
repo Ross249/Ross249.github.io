@@ -1,0 +1,56 @@
+---
+interface Props {
+  title: string;
+}
+import "../styles/global.css";
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Software Engineer/ Stoic/ Bookworm/ Gamer/ Available for a new opportunity/Discovering something useful, empowering and beautiful"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Slabo+27px&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Facebook Meta Tags -->
+    <meta property="og:title" content="Jim Luo" />
+    <meta
+      property="og:description"
+      content="Software Engineer/ Stoic/ Bookworm/ Gamer/ Available for a new opportunity/Discovering something useful, empowering and beautiful"
+    />
+    <meta
+      property="og:image"
+      content="https://www.jimmieluo.com/images/og.jpg"
+    />
+    <meta property="og:url" content="www.jimmieluo.com" />
+    <meta property="og:site_name" content="jimmieluo" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jim Luo" />
+    <meta
+      name="twitter:description"
+      content="Software Engineer/ Stoic/ Bookworm/ Gamer/ Available for a new opportunity/Discovering something useful, empowering and beautiful"
+    />
+    <meta
+      name="twitter:image"
+      content="https://www.jimmieluo.com/images/og.jpg"
+    />
+  </head>
+  <body class="bg-palette-2 overflow-x-hidden">
+    <slot />
+  </body>
+</html>
