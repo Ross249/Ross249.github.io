@@ -24,7 +24,6 @@ const { title } = Astro.props;
       rel="stylesheet"
     />
     <meta name="generator" content={Astro.generator} />
-    <!-- Facebook Meta Tags -->
     <meta property="og:title" content="Jim Luo" />
     <meta
       property="og:description"
@@ -49,8 +48,21 @@ const { title } = Astro.props;
       name="twitter:image"
       content="https://www.jimmieluo.com/images/og.jpg"
     />
+    <style is:global>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+      }
+      * {
+        box-sizing: border-box;
+      }
+    </style>
   </head>
-  <body class="bg-palette-2 overflow-x-hidden">
+  <body class="bg-palette-2">
     <slot />
   </body>
 </html>

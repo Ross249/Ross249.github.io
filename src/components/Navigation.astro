@@ -2,21 +2,6 @@
 import NavLink from "./NavLink.astro";
 
 const links = [
-  // {
-  //   id: "link-0",
-  //   title: "Life",
-  //   link: "#",
-  // },
-  // {
-  //   id: "link-1",
-  //   title: "Code",
-  //   link: "#",
-  // },
-  // {
-  //   id: "link-2",
-  //   title: "Read",
-  //   link: "#",
-  // },
   {
     id: "link-0",
     title: "Resume",
@@ -27,9 +12,9 @@ const links = [
 
 <!-- Navigation -->
 <nav
-  class="fixed top-0 left-0 w-[100vw] z-50 px-8 py-6 flex justify-between items-center"
+  class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-6 flex justify-between items-center"
 >
-  <div class="flex flex-col text-gray-800">
+  <div class="flex flex-col text-gray-700">
     <a href="/" class="text-2xl font-hw tracking-wider">Jim</a>
     <a href="/" class="text-2xl font-hw tracking-wider -mt-2">Luo</a>
   </div>
@@ -38,7 +23,7 @@ const links = [
     {links.map((l) => <NavLink url={l.link} title={l.title} />)}
   </div>
 
-  <button class="md:hidden mobile-menu-button z-50 text-gray-800">
+  <button class="md:hidden mobile-menu-button z-50 text-gray-700">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         stroke-linecap="round"
@@ -49,7 +34,9 @@ const links = [
   </button>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu fixed inset-0 z-40 hidden bg-palette-7">
+  <div
+    class="mobile-menu fixed inset-0 z-40 hidden bg-palette-7 justify-center items-center"
+  >
     <div
       class="flex flex-col items-center justify-center h-full space-y-8 text-xl"
     >
@@ -77,6 +64,7 @@ const links = [
 
     function openMenu() {
       menu?.classList.remove("hidden");
+      menu?.classList.add("flex");
       gsap.fromTo(
         menu,
         { opacity: 0 },
@@ -103,6 +91,7 @@ const links = [
         ease: "power2.in",
         onComplete: () => {
           menu?.classList.add("hidden");
+          menu?.classList.remove("flex");
         },
       });
     }
