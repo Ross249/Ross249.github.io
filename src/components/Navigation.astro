@@ -23,7 +23,10 @@ const links = [
     {links.map((l) => <NavLink url={l.link} title={l.title} />)}
   </div>
 
-  <button class="md:hidden mobile-menu-button z-50 text-gray-700">
+  <button
+    class="md:hidden mobile-menu-button z-50 text-gray-700"
+    aria-label="Mobile Menu"
+  >
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path
         stroke-linecap="round"
