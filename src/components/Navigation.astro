@@ -29,10 +29,9 @@ const links = [
 <nav
   class="fixed top-0 left-0 w-full z-50 px-4 md:px-8 py-6 flex justify-between items-center"
 >
-  <div class="flex flex-col text-gray-700">
-    <a href="/" class="text-2xl font-hw tracking-wider">Jim</a>
-    <a href="/" class="text-2xl font-hw tracking-wider -mt-2">Luo</a>
-  </div>
+  <a href="/" class="block">
+    <img src="/favicon.svg" alt="Jim Luo" class="h-12 w-12" />
+  </a>
 
   <div class="hidden md:flex space-x-12 text-lg tracking-widest">
     {links.map((l) => <NavLink url={l.link} title={l.title} />)}
@@ -86,12 +85,12 @@ const links = [
       gsap.fromTo(
         menu,
         { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: "power2.out" }
+        { opacity: 1, duration: 0.5, ease: "power2.out" },
       );
       gsap.fromTo(
         menuItems,
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" }
+        { y: 0, opacity: 1, duration: 0.5, stagger: 0.1, ease: "power2.out" },
       );
     }
 
